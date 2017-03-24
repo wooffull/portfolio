@@ -1,9 +1,35 @@
 <!DOCTYPE HTML>
 <html lang="en">
-    <?php include "php/Head.php"?>
+    <head>
+        <!-- Character encoding -->
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1,
+        maximum-scale=1">
+
+		<!-- Favourite/bookmark icon -->
+		<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+
+        <title>Hector Pi&ntilde;eiro II</title>
+
+		<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+        <link rel="stylesheet" href="styles/normalize.css" type="text/css">
+        <link rel="stylesheet" href="styles/styles.css" type="text/css">
+
+        <!--[if IE]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js">
+        </script>
+        <![endif]-->
+    </head>
 
     <body>
-        <?php include "php/NavBar.php"?>
+        <nav id="nav-bar">
+			<span class="nav-bar-element-span"><a href="index.html" class="nav-bar-element-link">Hector</a></span>
+			<span class="nav-bar-element-span"><a href="projects.html" class="nav-bar-element-link">Projects</a></span>
+			<span class="nav-bar-element-span"><a href="./img/Resume.pdf" class="nav-bar-element-link">Resume</a></span>
+			<span class="nav-bar-element-span"><a href="music.html" class="nav-bar-element-link">Music</a></span>
+        </nav>
 
         <div id="cloud-box">
         </div>
@@ -68,6 +94,8 @@
             </div>
         </div>
 
-        <?php include "php/JsInclude.php"?>
+		<script src="lib/jquery-2.1.3.min.js"></script>
+		<script src="js/HFP.js"></script>
+		<script src="js/main.js"></script>
     </body>
 </html>

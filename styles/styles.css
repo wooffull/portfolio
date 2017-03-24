@@ -1,4 +1,4 @@
-@font-face {
+/*@font-face {
     font-family: "Lato";
     src: url("../fonts/Lato/Lato-Regular.ttf"),
         local("☺");
@@ -14,7 +14,7 @@
     font-family: "Open Sans Bold";
     src: url("../fonts/Open_Sans/OpenSans-Bold.ttf"),
         local("☺");
-}
+}*/
 
 html {
     min-height: 100%;
@@ -30,7 +30,8 @@ body {
 }
 
 h1 {
-    font-family: "Open Sans Bold", "sans-serif";
+    font-family: "Open Sans", "sans-serif";
+	font-weight: 700;
 }
 
 #content * p {
@@ -168,7 +169,8 @@ h5 {
     font-size: 1.2em;
     font-weight: 600;
     color: #e6b360;
-    font-family: "Open Sans Bold", "sans-serif";
+    font-family: "Open Sans", "sans-serif";
+	font-weight: 700;
 }
 
 .project-image-container {

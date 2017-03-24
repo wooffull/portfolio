@@ -278,7 +278,7 @@ $(document).ready(function () {
     var getCurrentPage = function () {
         var href = window.location.href;
         var hrefSplitArray = href.split('/');
-        var curPage = hrefSplitArray[hrefSplitArray.length - 1] || "index.php";
+        var curPage = hrefSplitArray[hrefSplitArray.length - 1] || "index.html";
         curPage = curPage.split('.')[0];
 
         if (curPage === "index") {
