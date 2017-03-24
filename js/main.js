@@ -1,5 +1,5 @@
 /**
- * Copyright 2014-2015, Hector Piñeiro II, All Rights Reserved
+ * Copyright 2014-2017, Hector Piñeiro II, All Rights Reserved
  */
 (function () { // Start IIFE
 
