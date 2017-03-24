@@ -1,0 +1,8 @@
+ErrorDocument 400 /portfolio-website/error.php
+ErrorDocument 401 /portfolio-website/error.php
+ErrorDocument 403 /portfolio-website/error.php
+ErrorDocument 404 /portfolio-website/404.php
+ErrorDocument 500 /portfolio-website/error.php
+
+Options -Indexes
+DirectoryIndex /portfolio-website/index.php
