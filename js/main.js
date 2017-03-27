@@ -352,7 +352,7 @@ $(document).ready(function () {
             project.addImage("img/rav1.png");
             project.addImage("img/rav2.png");
             project.addImage("img/rav3.png");
-            project.setDownloadLink("https://people.rit.edu/hfp1355/gamePrototype/prototype1.html");
+            project.setDownloadLink("https://wooffull.github.io/portfolio-website/gameprototype2/prototype1.html");
             project.setDescription(
             "<p>Ravagen is my latest project, graphically inspired by older Metroid games. This current version is Ravagen's first prototype that I made for a 2-week class assignment back in late 2015. I loved working on this prototype because I got a chance to create all the assets, from graphics like the parallax background, to music and sounds, to programming and design.</p>" +
             "<p>Ravagen uses a quad-tree data structure for spatial partitioning so that fewer calculations are made when checking collisions. A basic particle effect is used for the ship's exhaust, however, in the future this will likely be changed to a style that's more \"pixel-art\" for the sake of consistency. A similar change in style is intended for the mini-map and other UI components.</p>" +

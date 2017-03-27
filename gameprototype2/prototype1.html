@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<style>
+        @font-face {
+            font-family: "Ubuntu";
+            src: url("font/Ubuntu-Regular.ttf");
+        }
+
+        html {
+            background-color: #000;
+        }
+        
+        body {
+            margin: 0;
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+		#game-canvas {
+            display: block;
+            margin: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 1px #333 solid;
+        } 
+        
+        #loading-div {
+            display: block;
+            font-family: "Ubuntu", "Verdana", "sans-serif";
+            color: white;
+            text-align: center;
+            margin: auto;
+            font-size: 36px;
+        }
+	</style>
+	<title>Prototype1</title>
+</head>
+<body>
+	<canvas id="game-canvas" width="640" height="480">
+		Update to a modern browser that supports canvas to play this game.
+	</canvas>
+    <div id="loading-div">
+        Loading...
+    </div>
+	<script src="lib/preloadjs-0.6.1.min.js"></script>
+	<script src="lib/soundjs-0.6.1.min.js"></script>
+    <script src="js/assets.js"></script>
+    <script src='js/vec2.js'></script>
+    <script src='js/quadtree.js'></script>
+	<script src='js/gameobjects.js'></script>
+	<script src='js/animation.js'></script>
+	<script src='js/ui.js'></script>
+	<script src='js/boundaries.js'></script>
+	<script src='js/particles.js'></script>
+	<script src='js/ship.js'></script>
+	<script src='js/enemies.js'></script>
+	<script src='js/nature.js'></script>
+	<script src='js/pickups.js'></script>
+	<script src='js/bullets.js'></script>
+	<script src='js/level.js'></script>
+    <script src='js/entitybuilder.js'></script>
+	<script src='js/main.js'></script>
+	<script src='js/keyboard.js'></script>
+	<script src='js/loader.js'></script>
+</body>
+</html>

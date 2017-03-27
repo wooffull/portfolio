@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<style>
+        @font-face {
+            font-family: "Ubuntu";
+            src: url("font/Ubuntu-Regular.ttf");
+        }
+
+        html {
+            background-color: #000;
+        }
+
+		#game-canvas {
+            display: block;
+            border: 1px solid gray;
+            margin: auto;
+        }
+
+        #loading-div {
+            display: block;
+            font-family: "Ubuntu", "Verdana", "sans-serif";
+            color: white;
+            text-align: center;
+            margin: auto;
+            font-size: 36px;
+        }
+
+        #tool-div {
+            padding-top: 1em;
+            margin: auto;
+            text-align: center;
+        }
+
+        .tool {
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+
+            display: inline-block;
+            border: 1px solid white;
+            border-radius: 2px;
+            width: 30px;
+            height: 30px;
+        }
+
+        .tool:hover {
+            border: 3px solid white;
+        }
+
+        .tool-selected {
+            border: 3px solid rgb(200, 255, 255);
+        }
+
+        #tool-draw {
+            background: url(editor/media/pencil.svg) center center no-repeat;
+        }
+
+        #tool-select {
+            background: url(editor/media/select.svg) center center no-repeat;
+        }
+
+        #tool-align {
+            background: url(editor/media/align.svg) center center no-repeat;
+        }
+
+        #tool-rotate {
+            background: url(editor/media/rotate.svg) center center no-repeat;
+        }
+
+        #side-ui {
+            position: absolute;
+            top: 1em;
+            left: 1em;
+        }
+	</style>
+	<title>Prototype1</title>
+</head>
+<body>
+    <div id="side-ui">
+        <input id="file-input" type="file" />
+        <br />
+        <br />
+
+        <input id="level-name" placeholder="Level Name">
+        <button id="btn-save-file" label="Save">Save</button>
+        <br />
+        <br />
+        <br />
+        <br />
+
+        <button id="btn-clear" label="Clear">Clear</button>
+        <br />
+        <br />
+        <br />
+        <br />
+
+        <select id="item-selector">
+        </select>
+    </div>
+
+	<canvas id="game-canvas" width="900" height="600">
+		Update to a modern browser that supports canvas to play this game.
+	</canvas>
+
+    <div id="loading-div">
+        Loading...
+    </div>
+    <div id="tool-div">
+        <span class="tool" id="tool-draw"></span>
+        <span class="tool" id="tool-select"></span>
+        <span class="tool" id="tool-align"></span>
+        <span class="tool" id="tool-rotate"></span>
+    </div>
+
+    <script src="editor/lib/jquery-2.1.4.js"></script>
+	<script src="lib/preloadjs-0.6.1.min.js"></script>
+	<script src="lib/soundjs-0.6.1.min.js"></script>
+    <script src="js/assets.js"></script>
+    <script src='js/vec2.js'></script>
+    <script src='js/quadtree.js'></script>
+	<script src='js/gameobjects.js'></script>
+	<script src='js/animation.js'></script>
+	<script src='js/ui.js'></script>
+	<script src='js/boundaries.js'></script>
+	<script src='js/particles.js'></script>
+	<script src='js/ship.js'></script>
+	<script src='js/enemies.js'></script>
+	<script src='js/pickups.js'></script>
+	<script src='js/bullets.js'></script>
+	<script src='js/nature.js'></script>
+	<script src='js/level.js'></script>
+    <script src='js/entitybuilder.js'></script>
+	<script src='editor/js/selector.js'></script>
+	<script src='editor/js/tools.js'></script>
+	<script src='editor/js/ui.js'></script>
+	<script src='editor/js/canvasMouse.js'></script>
+	<script src='editor/js/main.js'></script>
+    <script src='js/keyboard.js'></script>
+	<script src='editor/js/loader.js'></script>
+</body>
+</html>
