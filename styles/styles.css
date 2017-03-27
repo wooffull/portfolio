@@ -110,6 +110,13 @@ h5 {
     z-index: 2;
 }
 
+#nav-container {
+	transform: translateX(-50%);
+	display: inline-block;
+	left: 50%;
+	position: relative;
+}
+
 .nav-bar-element-link {
     text-decoration: none;
     color: rgb(210, 213, 239);
@@ -195,12 +202,6 @@ h5 {
     margin-top: 1em;
     border: solid black 1px;
 }
-.project-current-images > img:nth-child(odd) {
-    margin-right: 0.5em;
-}
-.project-current-images > img:nth-child(even) {
-    margin-left: 0.5em;
-}
 
 .project-container .project-description-container,
 .project-current-container  .project-description-container {
@@ -214,7 +215,7 @@ h5 {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     overflow-y: hidden;
-    max-height: 18em;
+    max-height: 258px; /* The size of preview GIFs */
     float: left;
     max-width: calc(50% - 1em);
     height: auto;
@@ -228,7 +229,7 @@ h5 {
   clear: both;
 }
 
-@media only screen and (min-width: 769px) {
+@media only screen and (min-width: 791px) {
     #nav-bar {
         padding: .5em 0em;
     }
@@ -250,7 +251,7 @@ h5 {
     }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 790px) {
     #nav-bar {
         padding: .25em 0em;
     }
@@ -280,8 +281,13 @@ h5 {
     }
 
     .project-container {
-        max-height: 15em;
+		max-height: none;
     }
+	
+	.project-image-container {
+		float: none;
+		width: inherit;
+	}
 
     .project-image-container > img {
         max-height: 12em;
@@ -289,7 +295,39 @@ h5 {
 
     .project-container .project-description-container {
         max-height: 12em;
+		max-width: none;
+		padding-left: 0em;
     }
+	
+	.project-description-container {
+		margin-top: 1em;
+	}
+	
+	#nav-container {
+		transform: initial;
+		left: 0;
+		display: initial;
+		position: initial;
+	}
+}
+
+@media only screen and (min-width: 1201px) {
+	.project-current-images > img:nth-child(odd) {
+		margin-right: 0.5em;
+	}
+	.project-current-images > img:nth-child(even) {
+		margin-left: 0.5em;
+	}
+}
+
+@media only screen and (max-width: 1200px) {
+	.project-current-images > img {
+		width: inherit;
+		max-width: 100%;
+		display: block;
+		margin: auto;
+		margin-top: 1em;
+	}
 }
 
 @media only screen and (max-width: 500px) {
@@ -311,8 +349,13 @@ h5 {
 
     .project-container {
         background-color: rgba(0, 0, 0, 0.25);
-        max-height: 15em;
+		max-height: none;
     }
+	
+	.project-image-container {
+		float: none;
+		width: inherit;
+	}
 
     .project-image-container > img {
         max-height: 10em;
@@ -320,7 +363,13 @@ h5 {
 
     .project-container .project-description-container {
         max-height: 10em;
+		max-width: none;
+		padding-left: 0em;
     }
+	
+	.project-description-container {
+		margin-top: 1em;
+	}
 }
 
 @media only screen and (min-width: 961px) {

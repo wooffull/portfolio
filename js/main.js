@@ -361,22 +361,23 @@ $(document).ready(function () {
 
             project = new Project("Root Canal");
             project.setTags(["DirectX", "C++", "HLSL"]);
+            project.addImage("img/rc2.gif");
             project.addImage("img/rc0.png");
             project.addImage("img/rc1.png");
             project.setDescription(
-            "<p>In early 2016, I worked with 3 others to create a small game in about 10 weeks with C++ and DirectX where you pilot a ship with the responsibility of drilling the cavities of a tooth as the bacteria tries to destroy you. We wrote some fun shaders for this assignment, like bloom, a toon shader, chromatic aberration, edge detection, and a neat CRT TV-looking shader with a scan line. We also used a computer shader to handle the opacity map of the drilled portions of the \"tooth\". Most of my efforts with the shaders were spent with the toon shader and the appropriate edge detection for it. I was the project lead for this game as I planned out the development timeline, scheduled meetings, and ensured that our scope was manageable. I worked together with the programming lead to create the engine after we planned out its design.</p>" +
+            "<p>In early 2016, I worked with 3 others to create a small game in 10 weeks with C++ and DirectX where you pilot a ship with the responsibility of drilling the cavities of a tooth as bacteria try to destroy you. We wrote some fun shaders for this assignment, like bloom, a toon shader, chromatic aberration, edge detection, and a neat CRT TV-looking shader with a scan line. We also used a compute shader to handle the opacity map of the drilled portions of the \"tooth\". Most of my efforts with the shaders were spent with the toon shader and the appropriate edge detection for it. I was the project lead for this game as I planned out the development timeline, scheduled meetings, and ensured that our scope was manageable. I worked together with the programming lead to create the engine after we planned out its design.</p>" +
             "<p>All in all, I wish we could have added more gamey components to Root Canal. This was a great experience for implementing basic shaders, but it needs some more content if it's going to be fun.<p>" +
             "<p>The game can be controlled with the arrow keys and the spacebar. The tab key toggles the x-ray effect to see the bacteria cannons beneath the \"tooth\", but it can only be used for a short amount of time before it needs to recharge.<p>");
             projects.push(project);
             
             project = new Project("A10ne Together");
             project.setTags(["Flash AS3", "User-Created Content", "Platformer"]);
+            project.addImage("img/at5.gif");
             project.addImage("img/at0.png");
             project.addImage("img/at1.png");
             project.addImage("img/at2.png");
             project.addImage("img/at3.png");
             project.addImage("img/at4.png");
-            project.addImage("img/at5.png");
             project.setDownloadLink("http://www.kongregate.com/games/Wooffull/test3_preview?guest_access_key=0aa9c657991a383f1bac752a49b72b8ca41e8c23a66412963f6c50bdeb628d2c");
             project.setDescription(
             "<p>A10ne Together (pronounced \"Alone Together\") was a Flash game I put together during my summer of 2013 and 2014 that used the Kongregate API to allow for shared user-created content. It was inspired by popular platformers like Super Meat Boy, but the title hints at its unique mechanic where the player is made up of pieces and must use them to navigate through the levels. The overworld is inspired by Super Mario World where the player can beat levels in different ways to unlock different paths.</p>" +
@@ -385,6 +386,7 @@ $(document).ready(function () {
 
             project = new Project("Guild of the Sparkle Dwarf");
             project.setTags(["XNA", "C#", "Puzzle Game"]);
+            project.addImage("img/guild3.gif");
             project.addImage("img/guild0.png");
             project.addImage("img/guild1.png");
             project.addImage("img/guild2.png");
@@ -413,8 +415,8 @@ $(document).ready(function () {
             
             project = new Project("AnyBeat");
             project.setTags(["Flash AS3", "Adobe AIR", "Rhythm Game"]);
+            project.addImage("img/anybeat1.gif");
             project.addImage("img/anybeat0.png");
-            project.addImage("img/anybeat1.png");
             project.addImage("img/anybeat2.png");
             project.addImage("img/anybeat3.png");
             project.addImage("img/anybeat4.png");
