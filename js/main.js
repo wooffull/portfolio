@@ -348,13 +348,13 @@ $(document).ready(function () {
             
             project = new Project("Ravagen");
             project.setTags(["HTML5 Canvas", "JavaScript", "Pixel Art"]);
+            project.addImage("img/rav3.gif");
             project.addImage("img/rav0.png");
             project.addImage("img/rav1.png");
             project.addImage("img/rav2.png");
-            project.addImage("img/rav3.png");
             project.setDownloadLink("./gameprototype2/prototype1.html");
             project.setDescription(
-            "<p>Ravagen is my latest project, graphically inspired by older Metroid games. This current version is Ravagen's first prototype that I made for a 2-week class assignment back in late 2015. I loved working on this prototype because I got a chance to create all the assets, from graphics like the parallax background, to music and sounds, to programming and design.</p>" +
+            "<p>Ravagen is my latest solo project, graphically inspired by older Metroid games. This current version is Ravagen's second prototype that I worked on in my Level Design class in fall 2016. The first prototype started as a 2-week class assignment back in late 2015.</p>" +
             "<p>Ravagen uses a quad-tree data structure for spatial partitioning so that fewer calculations are made when checking collisions. A basic particle effect is used for the ship's exhaust, however, in the future this will likely be changed to a style that's more \"pixel-art\" for the sake of consistency. A similar change in style is intended for the mini-map and other UI components.</p>" +
             "<p>Currently I'm working on an application that I could make games with, and my goal is to be able to create Ravagen with that creator.</p>");
             projects.push(project);
