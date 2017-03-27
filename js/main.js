@@ -387,6 +387,7 @@ $(document).ready(function () {
             project = new Project("Guild of the Sparkle Dwarf");
             project.setTags(["XNA", "C#", "Puzzle Game"]);
             project.addImage("img/guild3.gif");
+            project.addImage("img/guild4.gif");
             project.addImage("img/guild0.png");
             project.addImage("img/guild1.png");
             project.addImage("img/guild2.png");
@@ -429,9 +430,9 @@ $(document).ready(function () {
 
             project = new Project("3D Flash Engine");
             project.setTags(["Flash AS3", "3D Rendering"]);
+            project.addImage("img/TDT2.gif");
             project.addImage("img/TDT0.png");
             project.addImage("img/TDT1.png");
-            project.addImage("img/TDT2.png");
             project.setDownloadLink("https://www.dropbox.com/s/0mfy0uk27saosbl/ThirdDimensionTest.swf?dl=0");
             project.setDescription(
             "<p>During my first year at RIT (2012), I wondered " +
