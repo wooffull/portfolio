@@ -388,7 +388,6 @@ $(document).ready(function () {
             project.setTags(["XNA", "C#", "Puzzle Game"]);
             project.addImage("img/guild3.gif");
             project.addImage("img/guild4.gif");
-            project.addImage("img/guild0.png");
             project.addImage("img/guild1.png");
             project.addImage("img/guild2.png");
             project.setDownloadLink("https://www.dropbox.com/s/9bdiada9lw0gzyj/Guild%20of%20the%20Sparkle%20Dwarf.zip?dl=0");
