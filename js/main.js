@@ -380,7 +380,7 @@ var ProjectPage = function (project) {
     
     if (this._project.getDownloadLink()) {
         this._downloadContainer = $("<div>");
-        this._downloadLink = $("<a href=\"" + this._project.getDownloadLink() + "\">").html("Play here!");
+        this._downloadLink = $("<a href=\"" + this._project.getDownloadLink() + "\">").html("Click to play!");
         this._downloadContainer.append(this._downloadLink);
         
         this._downloadContainer.addClass(
@@ -443,14 +443,14 @@ ProjectPage.prototype = Object.create(DomElement.prototype, {
 				desc += data.reflection;
 			}
 			
-			if (data.duties) {
-				desc += "<h4>Duties</h4>";
-				desc += data.duties;
-			}
-			
 			if (data.technology) {
 				desc += "<h4>Technology</h4>";
 				desc += data.technology;
+			}
+			
+			if (data.duties) {
+				desc += "<h4>Duties</h4>";
+				desc += data.duties;
 			}
 			
 			if (data.programming) {
@@ -562,13 +562,13 @@ $(document).ready(function () {
             project.addImage("img/rav2.png");
             project.setDownloadLink("./ravagen.html");
 			project.setBackgroundInfo(
-				"A futuristic space-shooter with a dash of <span class=\"keyword\">Metroid</span>.",
+				"Futuristic space-shooter with a dash of <span class=\"keyword\">Metroid</span>.",
 				"Humanity has neared its end with no success of relocating to a new home planet. The intellectual elite have created you, an AI to explore the corners of space in an effort to uncover the mysteries of life and start humanity anew.",
-				"Ravagen is my latest solo project. The <span class=\"keyword\">\"Play Here!\"</span> link above contains Ravagen's second prototype that I made in my Level Design class in fall 2016. The first prototype was created for a 2-week class assignment in fall 2015."
+				"Ravagen is my latest solo project. The <span class=\"keyword\">\Click to play!\</span> link above contains Ravagen's second prototype that I made in my Level Design class in fall 2016. Its previous prototype started as a 2-week class assignment in fall 2015."
 			);
 			project.setReflectionInfo(
 				"Through <span class=\"keyword\">playtesting</span>, I've been able to pinpoint some big issues with Ravagen's current prototype. For example, the game feels very zoomed-in, which makes it hard to maneuver through the level. As I mention in the Graphics section below, I attempt to use colors to help differentiate between areas and create mental landmarks for the player, but this didn't seem to fix the big issue at hand. Looks like I'll have to scale things down next!",
-				"I faced some performance issues as I build the current version of Ravagen. (I discuss this in more detail in the Programming section below.) This piqued my interest in <span class=\"keyword\">game engine development</span>, and I actually pulled code from Ravagen to use in my current Web Game Engine (called Waffle)."
+				"I faced some performance issues as I built the current version of Ravagen. (I discuss this in more detail in the Programming section below.) This piqued my interest in <span class=\"keyword\">game engine development</span>, and I actually pulled code optimizations from Ravagen to use in my current Web Game Engine (called Waffle). Creating Ravagen has led me to researching limitations of HTML5 Canvas's 2D context. Because of this, I've switched Waffle engine's rendering to a <span class=\"keyword\">WebGL</span> context by using PixiJS which has brought about significant render time improvements."
 			);
 			project.setDutiesInfo(
 				"This is a solo project, so all duties were carried out by me."
@@ -583,7 +583,7 @@ $(document).ready(function () {
 			);
 			project.setProgrammingInfo(
 				"I use a <span class=\"keyword\">quadtree data structure</span> to partition the world into smaller sections. This reduces the amount of collision checks needed per frame since only nearby objects check each other for collisions.",
-				"I also partition the world into <span class=\"keyword\">buckets</span> of equal size. The number of buckets depends on the size of the world. Only objects in the buckets surrounding the camera's current bucket are used into the quadtree so that building the quadtree is less expensive every frame.",
+				"I also partition the world into <span class=\"keyword\">buckets</span> of equal size. The number of buckets depends on the size of the world. Only objects in the buckets surrounding the camera's current bucket are put in the quadtree so that building the quadtree is less expensive every frame. Consequently, not all objects in the world are updated every frame, but only those in nearby buckets (which includes everything on screen). This was a design decision to almost mimic older games that wouldn't update objects that moved off screen. Since that was mainly a hardware limitation in the past, I refrain from taking it to that extreme so that it doesn't interfere with <span class=\"keyword\">user experience</span>.",
 				"I <span class=\"keyword\">batch draw calls</span> for objects with the same graphic to squeeze performance out of the 2D context with HTML5's Canvas.",
 				"Here's a <span class=\"keyword\">code snippet</span> of how I acheived the camera effect that seeks ahead of the player when moving (as seen in the Gallery section below):",
 				
@@ -625,12 +625,12 @@ $(document).ready(function () {
 			);
 			project.setGraphicsInfo(
 				"I lightly referenced Metroid Fusion for the general aesthetic of Ravagen. I used Ravagen's first couple prototypes to jump into learning pixel art. Since then, I've continued my studies by analyzing art of games from older consoles (SNES, GBA, etc), and following pixel art Twitter prompts and occasionally posting my work <span class=\"keyword\">@Wooffull</span>.",
-				"Since Ravagen's prototype only comprises of a single large level, I used differently colored wall tiles to differentiate between major sections of the level. For example: the green areas are only accessible once the player has found the bullet power up; the red area leads to the end as a sort of \"cliffhanger\" until the next build of Ravagen is released. Also, the \"environmental art\" such as the crystals sticking out of the walls are specific to its tile's color. For instance, the red crystals only come out of the green tiles.",
-				"I intend to have <span class=\"keyword\">lights/ shadows</span> in the final version of Ravagen to hone in on certain moods for different sections of the game."
+				"Since Ravagen's prototype only comprises of a single large level, I used differently colored wall tiles to differentiate between major sections of the level. For example: the green areas are only accessible once the player has found the bullet power up; the red area leads to the end as a \"cliffhanger\" until the next build of Ravagen is released. Also, the \"environmental art\" such as the crystals sticking out of the walls are specific to its tile's color. For instance, the red crystals only come out of the green tiles.",
+				"The final version of Ravagen will have <span class=\"keyword\">lights/ shadows</span> to hone in on certain moods for different sections of the game."
 			);
 			project.setAudioInfo(
-				"I have always been interested in composition, especially for games. I decided to explore some retro game sounds for Ravagen's initial prototype by using the FamiSynthII VST and FL Studio 11. The results from these experiments led to what you can hear in Ravagen's current prototype.",
-				"I went on to create a new theme for Ravagen after I finished its current prototype &ndash; the new theme can be found in the <span class=\"keyword\">Music</span> section of my portfolio. I introduce a <span class=\"keyword\">minimalistic motif</span> in the new theme that I intend to spread throughout Ravagen's soundtrack."
+				"I have always been interested in composition, especially for games. I decided to explore some retro game sounds for Ravagen's initial prototype by using the FamiSynthII VST with FL Studio 11. The results from these experiments led to what you can hear in Ravagen's current soundtrack.",
+				"I went on to create a new theme for Ravagen after I finished its current prototype &ndash; the new theme can be found in the <span class=\"keyword\">Music</span> section of my portfolio. I introduce a <span class=\"keyword\">minimalistic motif</span> that I intend to spread throughout Ravagen's soundtrack."
 			);
             projects.push(project);
 				
@@ -645,8 +645,23 @@ $(document).ready(function () {
             project.addImage("img/at4.png");
             project.setDownloadLink("http://www.kongregate.com/games/Wooffull/test3_preview?guest_access_key=0aa9c657991a383f1bac752a49b72b8ca41e8c23a66412963f6c50bdeb628d2c");
 			project.setBackgroundInfo(
-				"A10ne Together (pronounced \"Alone Together\") was a Flash game I put together during my summer of 2013 and 2014 that used the Kongregate API to allow for shared user-created content. It was inspired by popular platformers like Super Meat Boy, but the title hints at its unique mechanic where the player is made up of pieces and must use them to navigate through the levels. The overworld is inspired by Super Mario World where the player can beat levels in different ways to unlock different paths.",
-				"A10ne Together also features a level maker that allows players to share custom-made levels, in addition to sharing impressive replays for in-game levels. Flash permissions must be enabled to access user-created content."
+				"Fast-paced platformer where you use the pieces that break off your character as platforms.",
+				"A10ne Together (pronounced \"Alone Together\") is a Flash game I put together during my summer of 2013 and 2014 that used the Kongregate API to allow for shared <span class=\"keyword\">user-created content</span>. It was inspired by popular platformers like Super Meat Boy, but the title hints at its unique mechanic where the player is made up of pieces and must use them to navigate through the levels. The overworld is inspired by Super Mario World where the player can beat levels in different ways to unlock different paths.",
+				"A10ne Together also features a level maker that allows players to share custom-made levels, in addition to sharing impressive <span class=\"keyword\">replays</span> for in-game levels. Flash permissions must be enabled to access user-created content."
+			);
+			project.setReflectionInfo(
+				"I regrettably left A10ne Together in an unfinished state. The unique mechanic of parts falling off the player to be used as platforms (which come back after staying still) was met with ample bugs. In fact, there are still bugs with that feature that prevent me from releasing it.",
+				"If I fixed the bugs with the block-breaking feature, I would have to flesh out the levels &ndash; fortunately, that would be easy since A10ne Together comes with a level editor.",
+				"I never intended to include heavy narrative in A10ne Together, but instead I wanted to lightly introduce it through the dialogues that display before every level starts. Given the time, I would still like to put an ending on A10ne Together."
+			);
+			project.setTechnologyInfo(
+				"<span class=\"keyword\">Adobe Flash Professional CS6</span>",
+				"<span class=\"keyword\">ActionScript 3</span>",
+				"Kongregate API",
+				"Adobe Photoshop CS5"
+			);
+			project.setDutiesInfo(
+				"This is a solo project, so all duties were carried out by me."
 			);
             projects.push(project);
 				
@@ -657,9 +672,37 @@ $(document).ready(function () {
             project.addImage("img/rc0.png");
             project.addImage("img/rc1.png");
 			project.setBackgroundInfo(
-				"In early 2016, I worked with 3 others to create a small game in 10 weeks with C++ and DirectX where you pilot a ship with the responsibility of drilling the cavities of a tooth as bacteria try to destroy you. We wrote some fun shaders for this assignment, like bloom, a toon shader, chromatic aberration, edge detection, and a neat CRT TV-looking shader with a scan line. We also used a compute shader to handle the opacity map of the drilled portions of the \"tooth\". Most of my efforts with the shaders were spent with the toon shader and the appropriate edge detection for it. I was the project lead for this game as I planned out the development timeline, scheduled meetings, and ensured that our scope was manageable. I worked together with the programming lead to create the engine after we planned out its design.",
-				"All in all, I wish we could have added more gamey components to Root Canal. This was a great experience for implementing basic shaders, but it needs some more content if it's going to be fun.",
-				"The game can be controlled with the arrow keys and the spacebar. The tab key toggles the x-ray effect to see the bacteria cannons beneath the \"tooth\", but it can only be used for a short amount of time before it needs to recharge."
+				"Top-down exploration game where you drill a tooth in search of cavities.",
+				"In Root Canal, you guide a small ship through a tooth in hope of destroying cavities. Use your x-ray vision to avoid the bacteria cannons as you drill as much as you can before inevitable destruction."
+			);	
+			project.setReflectionInfo(
+				"Our team dynamic could have benefited from more frequent communication and stricter deadlines. As project lead, I should have created a more ambitious timeline to discourage everyone from treating the deadlines as flexible.",
+				"Nonetheless, the focus of this project was to experiment with <span class=\"keyword\">DirectX</span> and <span class=\"keyword\">HLSL</span>. We prototyped the gameplay in <span class=\"keyword\">Unity 4</span> before we switched over to our own engine in <span class=\"keyword\">C++</span>. This allowed us to drill down the core features we needed. Regardless, Root Canal is missing its fun factor. By introducing a goal, some way to progress as a player, and more interactivity (with enemies, the world, etc), I think the fun factor will start to show."
+			);
+			project.setTechnologyInfo(
+				"<span class=\"keyword\">DirectX</span>",
+				"<span class=\"keyword\">C++</span>",
+				"<span class=\"keyword\">HLSL (High-Level Shader Language)</span>",
+				"<span class=\"keyword\">GitHub</span>",
+				"Autodesk Maya 2014",
+				"Adobe Photoshop CS5",
+				"Slack"
+			);
+			project.setDutiesInfo(
+				"I wrote the <span class=\"keyword\">toon shader</span> in <span class=\"keyword\">HLSL</span>, and tweaked the others so that they worked nicely with each other.",
+				"I worked together with the programming lead to design and program the engine. Our resulting engine was a result of merging 2 of our OpenGL engines and the base DirectX engine we were given.",
+				"I was the <span class=\"keyword\">project lead</span>. I planned out the development timeline, scheduled meetings, and ensured our scope was manageable."
+			);	
+			project.setProgrammingInfo(
+				"Since I wrote the <span class=\"keyword\">toon shader</span>, I created a texture that defined the ramps for color banding. This was a simple texture that used four shades of gray (white, light gray, dark gray, black). The shade used for the \"toon shading\" calculation depends on how much light a certain pixel received. This was a simple mapping from percentage of light (as the x-coordinate) to the color defined at the <span class=\"keyword\">UV-coordinates</span> on the color ramp texture.",
+				"Edge detection was used in both toon shading and as a way of outlining objects when using x-ray vision (as seen in the Gallery below).",
+				"We used a <span class=\"keyword\">compute shader</span> to handle the <span class=\"keyword\">opacity map</span> of the drilled portions of the \"tooth\". <span class=\"keyword\">Bloom</span>, <span class=\"keyword\">chromatic aberration</span>, and a neat CRT TV-looking shader with a scan line were also used to give Root Canal the aesthetic is has."
+			);	
+			project.setGraphicsInfo(
+				"I used Maya 2014 to create the simple models for the bacteria cannons and bullets. The ship and drill models were created by a teammate."
+			);
+			project.setAudioInfo(
+				"The background music and sounds were composed by a teammate as a project for his music technology class."
 			);
             projects.push(project);
 				
@@ -673,6 +716,7 @@ $(document).ready(function () {
             project.setDownloadLink("https://www.dropbox.com/s/9bdiada9lw0gzyj/Guild%20of%20the%20Sparkle%20Dwarf.zip?dl=0");
 				
             project.setBackgroundInfo(
+				"Puzzle game with a focus on Othello-like and block sliding puzzles.",
 				"I worked in a team of four for ten weeks to create this XNA game back in early 2013. This is the first game that I've ever made with a team. Despite the challenge, it was such a great experience.",
 				"Guild of the Sparkle Dwarf is a puzzle game where players race against the time to get a high score. Unfortunately, we were pressed for time at the end, so our instructions/ tutorial section was pretty weak."
 			);
@@ -686,6 +730,7 @@ $(document).ready(function () {
             project.addImage("img/collect2.png");
             project.setDownloadLink("https://www.dropbox.com/s/izlgm80tyo5fbul/CollectEmUp.zip?dl=0");
             project.setBackgroundInfo(
+				"3D platformer following a lizard on his journey to become a dragon.",
 				"In late 2015, I worked in a team of 9 people to create a small game in 15 weeks with C++ and OpenGL where you (a lizard) need to collect gears to create a machine to help you fly and become a \"dragon\". About half way through the project, we dropped down to 5 members, so our scope was cut drastically. I was the programming lead for this project and designed the software architecture. The shaders we wrote were basic vertex and pixel shaders for OpenGL.",
 				"My favorite part of this project is the skybox for some reason (probably because it was the first time I had to manually adjust the graphic by hand so that it wrapped properly, which turned out to be a fun exercise). It really adds an atmosphere, especially compared to a plain white background. We implemented an oct-tree for spatial partitioning, but we had issues using it successfully for collision detection. Since we were pressed for time and since there were very few entities, we resorted to simple collision detection with OBBs (Oriented Bounding Boxes) and the separating axis theorem. Also, I wish we could have added basic animation so the character didn't look so rigid, but alas that was out of our scope.",
 				"The character can be controlled with the WASD keys, and spacebar is used for jumping."
@@ -703,8 +748,12 @@ $(document).ready(function () {
             project.addImage("img/anybeat5.png");
             project.setDownloadLink("https://www.dropbox.com/s/i52i4s41e5w6bev/AnyBEAT.zip?dl=0");
             project.setBackgroundInfo(
+				"Rhythm game engine used for creating experimental rhythm games.",
 				"AnyBeat is a rhythm game engine I created using Adobe AIR with Flash AS3 throughout 2014. I have always loved combining music and gaming, like in popular rhythm games such as Dance Dance Revolution, StepMania, and Osu. The main purpose of AnyBeat was to create a rhythm game that used a unique controller to provide a fresh experience to the rhythm gaming scene. I wanted to use AnyBeat as a sort of rhythm game engine to create any kind of rhythm game I could imagine. Modern, casual rhythm games like the Rhythm Heaven series introduced a new spin to rhythm gaming that mirrored Wario Ware minigames, and I wanted to be able to create rhythm games as unique as those.",
 				"Currently, AnyBeat can mainly produce levels for rhythm games that require keyboard input. Rhythm games like StepMania were the main inspiration that led up to AnyBeat's current state."
+			);
+			project.setDutiesInfo(
+				"This is a solo project, so all duties were carried out by me."
 			);
             projects.push(project);
 
@@ -716,6 +765,7 @@ $(document).ready(function () {
             project.addImage("img/TDT1.png");
             project.setDownloadLink("https://www.dropbox.com/s/0mfy0uk27saosbl/ThirdDimensionTest.swf?dl=0");
             project.setBackgroundInfo(
+				"Primitive 3D graphics rendering engine made in Flash.",
 				"During my first year at RIT (2012), I wondered how 3D was handled in applications. I enjoy math, so I attempted to take on the challenge of creating a basic 3D engine from scratch, in Adobe's Flash environment. A friend of mine was interested in the project and worked together with me for a few months. The .swf in the download link provides an area where the user can explore a basic 3D area where shapes are rotating and moving around.",
 				"Unfortunately, we never finished with this project. For example, we were never able to address the problem of faces displaying incorrectly when it contains vertices both behind and in front of the camera. Nonetheless, this was a great learning experience for how a 3-dimensional world can be programmatically portrayed on a 2-dimensional screen. Since then, I've been enlightened regarding 3D graphics after using OpenGL and DirectX."
 			);
