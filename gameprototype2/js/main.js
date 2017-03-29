@@ -481,24 +481,30 @@ app.main = {
     },
 
     /**
-     * Acts like a simple camera to follow the player
+     * Eases the camera's position toward the player, or ahead of the player
+     * if its moving
      */
     followPlayer : function () {
         var velocity = this.player.velocity;
         var velocityMag = velocity.getMagnitude();
 
+        // Halve the camera speed if the player's not moving very fast
         if (velocityMag < 0.1) velocityMag *= 0.5;
 
+        // Calculate the distance ahead of the player that the camera should be
         var seekAheadFactor = Math.min(250.0, velocityMag * 1000);
-
         var maxCamPos = velocity.clone().normalize().multiply(seekAheadFactor);
-
+        
+        // Calculate the camera's displacement to the new position then
+        // multiply it by a "Follow rate" to ease the camera to that position
+        // over time
         var cameraDisplacement = app.Vec2.subtract(
             this.worldOffset,
             this.player.position.clone().add(maxCamPos)
         );
         cameraDisplacement.multiply(this.CAMERA_FOLLOW_RATE);
 
+        // Move the camera to its final position
         this.worldOffset.subtract(cameraDisplacement);
     },
 
