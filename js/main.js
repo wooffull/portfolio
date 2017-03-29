@@ -560,7 +560,7 @@ $(document).ready(function () {
             project.addImage("img/rav0.png");
             project.addImage("img/rav1.png");
             project.addImage("img/rav2.png");
-            project.setDownloadLink("./gameprototype2/prototype1.html");
+            project.setDownloadLink("./ravagen.html");
 			project.setBackgroundInfo(
 				"A futuristic space-shooter with a dash of <span class=\"keyword\">Metroid</span>.",
 				"Humanity has neared its end with no success of relocating to a new home planet. The intellectual elite have created you, an AI to explore the corners of space in an effort to uncover the mysteries of life and start humanity anew.",

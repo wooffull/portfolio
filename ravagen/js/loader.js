@@ -48,7 +48,7 @@ window.onload = function(){
         }
     
         var rawFile = new XMLHttpRequest();
-        rawFile.open("GET", "editor/data/ld_final2.json", false);
+        rawFile.open("GET", "ravagen/editor/data/ld_final2.json", false);
         rawFile.onreadystatechange = function ()
         {
             if (rawFile.readyState === 4)
