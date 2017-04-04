@@ -636,7 +636,7 @@ $(document).ready(function () {
 				
             
             project = new Project("A10ne Together");
-            project.setTags(["Flash AS3", "User-Created Content", "Platformer"]);
+            project.setTags(["Flash AS3", "User-Created Content", "Built-In Level Editor"]);
             project.addImage("img/at5.gif");
             project.addImage("img/at0.png");
             project.addImage("img/at1.png");
