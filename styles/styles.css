@@ -70,11 +70,9 @@ h1 {
 }
 
 #me {
-    float: left;
     width: 180px;
     margin-top: 6px;
-    margin-right: 3em;
-    display: flex;
+    margin-bottom: 1em;
     
     -webkit-box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.75);
@@ -198,6 +196,10 @@ code {
 	color: #7ac1de;
 }
 
+#github-icon {
+  height: 32px;
+}
+
 .project-download-link {
 }
 
@@ -245,6 +247,25 @@ code {
   content: "";
   display: table;
   clear: both;
+}
+
+.material-icons {
+  font-size: 32px;
+}
+
+#icon-container {
+  display: block;
+  text-align: center;
+}
+
+.icon-link {
+  flex:auto;
+  text-align: center;
+  margin: 0 5px;
+}
+
+.img-container {
+  margin: 1em auto 2em auto;
 }
 
 @media only screen and (min-width: 791px) {
@@ -391,9 +412,14 @@ code {
 }
 
 @media only screen and (min-width: 961px) {
-    #bio-description > div {
+    #bio-description > div.bio-description-text {
         border-left: 1px solid #7ac1de;
         padding-left: 1em;
+    }
+  
+    #bio-description > div.img-container {
+      float: left;
+      margin-right: 3em;
     }
 }
 
@@ -402,8 +428,8 @@ code {
         float: none;
         min-width: 140px;
         max-width: 220px;
+        margin: 0 auto 1em auto;
         width: 45%;
-        margin: 1em auto 2em auto;
         display: block;
     }
 }
