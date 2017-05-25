@@ -253,6 +253,11 @@ code {
   font-size: 32px;
 }
 
+.material-icons-project-icon {
+  line-height: inherit;
+  vertical-align: text-bottom;
+}
+
 #icon-container {
   display: block;
   text-align: center;

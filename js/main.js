@@ -380,7 +380,7 @@ var ProjectPage = function (project) {
     
     if (this._project.getDownloadLink()) {
         this._downloadContainer = $("<div>");
-        this._downloadLink = $("<a href=\"" + this._project.getDownloadLink() + "\">").html("Click to play!");
+        this._downloadLink = $("<a href=\"" + this._project.getDownloadLink() + "\">").html("<i class=\"material-icons material-icons-project-icon\">videogame_asset</i> Click to play!");
         this._downloadContainer.append(this._downloadLink);
         
         this._downloadContainer.addClass(
