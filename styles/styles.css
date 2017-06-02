@@ -203,14 +203,14 @@ code {
 .project-download-link {
 }
 
-.project-download-link > a {
+.project-download-link > a, a.description-link {
     font-size: 0.9em;
     color: #5ce894;
     font-weight: 600;
     text-decoration: none;
 }
 
-.project-download-link > a:hover {
+.project-download-link > a:hover, a.description-link:hover {
     color: white;
 }
 

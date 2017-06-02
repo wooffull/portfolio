@@ -554,6 +554,48 @@ $(document).ready(function () {
             var projects = [];
             var project;
             
+            
+            project = new Project("Waffle Game Engine");
+            project.setTags(["HTML5 Canvas", "JavaScript", "ES6", "Game Engine Development"]);
+            project.addImage("img/WFL1_a.gif");
+            project.addImage("img/WFL1_b.gif");
+            project.addImage("img/rav3.gif");
+            project.addImage("img/WFL1_c.gif");
+            project.addImage("img/WFL1_d.png");
+			project.setBackgroundInfo(
+				"Personal open-source 2D game engine.",
+				"Waffle Game Engine is used for creating performant 2D web games, and intended to be used with the <a class=\"description-link\" href=\"https://github.com/wooffull/wfl-editor\">Waffle Game Editor</a>. Reliability, performance, and ease of use are the primary points of focus in Waffle's design.",
+        "Reliability: I use <span class=\"keyword\">regression tests</span> to ensure predictable behavior in the engine. When odd bugs show up, I use regression tests to create a scene configuration that reproduces the issue. This allows me to do <span class=\"keyword\">test-driven development</span> via regression tests. The collection of regression tests also provides a nice sanity check that all old functionality still works when new features are added.",
+        "Performance: I use Chrome's developer tools (especially the <span class=\"keyword\">profiler</span>) to highlight performance bottlenecks in Waffle. I use the <a class=\"description-link\" href=\"http://www.pixijs.com/\">PixiJS</a> library to handle scene rendering with WebGL, which avoids a lot of performance limitations seen in a normal 2D Canvas.",
+        "Ease of Use: Special attention is given to designing Waffle's API so that it's simple but not limiting. Tasks are organized in a Trello board to allow for appropriate planning ahead of time."
+			);
+			project.setReflectionInfo(
+        "Waffle started when I first began <a class=\"description-link\" href=\"projects.html?id=1\">Ravagen</a>, but I never focused on it as its own entity until the start of 2017. Through Waffle, I was able to find a real interest in game engine development. I spent countless hours researching various topics of physics simulation in games, looking through forums for Bullet and Box2D, reading numerous blogs about contact point generation and reduction, and spending every chance I could working to improve it (including using it in Ludum Dare 38 for my <a class=\"description-link\" href=\"https://ldjam.com/events/ludum-dare/38/claimed\">game submission</a> to get hands-on experience with it).",
+        "From my experience with Waffle, I want to focus on a better design for Waffle's API (especially state management and animation) to make it even easier to use. Also, since I want an editor for speedier prototyping, I need to put more time into the <a class=\"description-link\" href=\"https://github.com/wooffull/wfl-editor\">Waffle Game Editor</a>. If Waffle never picks up as a viable engine for game development, I envision it at least being a helpful tool for prototyping."
+			);
+			project.setDutiesInfo(
+				"This is a solo project, so all duties were carried out by me. However, <a class=\"description-link\" href=\"http://bbeshel.github.io/\">Benjamin Beshel</a> has worked with me on testing the engine by helping me create games with it (see the gallery below)."
+			);
+			project.setTechnologyInfo(
+				"<span class=\"keyword\">HTML5 Canvas</span>",
+				"PixiJS",
+				"<span class=\"keyword\">JavaScript</span>",
+				"<span class=\"keyword\">GitHub</span>",
+				"<span class=\"keyword\">ES6</span>",
+				"Babel",
+				"Browserify"
+			);
+			project.setProgrammingInfo(
+				"I use a <span class=\"keyword\">quadtree data structure</span> to partition the world into smaller sections. This reduces the amount of collision checks needed per frame since only nearby objects check each other for collisions.",
+				"I also partition the world into <span class=\"keyword\">buckets</span> of equal size. The number of buckets depends on the size of the world. Only objects in the buckets surrounding the camera's current bucket are put in the quadtree so that building the quadtree is less expensive every frame. Consequently, not all objects in the world are updated every frame, but only those in nearby buckets (which includes everything on screen). This was a design decision to almost mimic older games that wouldn't update objects that moved off screen. Since that was mainly a hardware limitation in the past, I refrain from taking it to that extreme so that it doesn't interfere with <span class=\"keyword\">user experience</span>. Moreover, the amount of surrounding buckets that are ever used at one time can be configured (depending on the game requirements).",
+        "I use an <span class=\"keyword\">iterative collision solver</span>. As a result, jitters may be seen for a complex configuration of colliding objects. However, Waffle is not intended to be treated as a complete physics engine, so this is considered a limitation.",
+        "<span class=\"keyword\">AABB</span>s are compared in the broadphase for collision detection, whereas the <span class=\"keyword\">separating axis theorem</span> is used for narrowphase. If a pair of objects passes both broadphase and narrowphase, a <span class=\"keyword\">contact manifold</span> is generated to describe the collision between the two entities."
+      );
+            projects.push(project);
+            
+            
+            
+            
             project = new Project("Ravagen");
             project.setTags(["HTML5 Canvas", "JavaScript", "Game Engine Development"]);
             project.addImage("img/rav3.gif");
@@ -568,7 +610,7 @@ $(document).ready(function () {
 			);
 			project.setReflectionInfo(
 				"Through <span class=\"keyword\">playtesting</span>, I've been able to pinpoint some big issues with Ravagen's current prototype. For example, the game feels very zoomed-in, which makes it hard to maneuver through the level. As I mention in the Graphics section below, I attempt to use colors to help differentiate between areas and create mental landmarks for the player, but this didn't seem to fix the big issue at hand. Looks like I'll have to scale things down next!",
-				"I faced some performance issues as I built the current version of Ravagen. (I discuss this in more detail in the Programming section below.) This piqued my interest in <span class=\"keyword\">game engine development</span>, and I actually pulled code optimizations from Ravagen to use in my current Web Game Engine (called Waffle). Creating Ravagen has led me to researching limitations of HTML5 Canvas's 2D context. Because of this, I've switched Waffle engine's rendering to a <span class=\"keyword\">WebGL</span> context by using PixiJS which has brought about significant render time improvements."
+				"I faced some performance issues as I built the current version of Ravagen. (I discuss this in more detail in the Programming section below.) This piqued my interest in <span class=\"keyword\">game engine development</span>, and I actually pulled code optimizations from Ravagen to use in my current Web Game Engine (called <a class=\"description-link\" href=\"projects.html?id=0\">Waffle</a>). Creating Ravagen has led me to researching limitations of HTML5 Canvas's 2D context. Because of this, I've switched <a class=\"description-link\" href=\"projects.html?id=0\">Waffle</a> engine's rendering to a <span class=\"keyword\">WebGL</span> context by using PixiJS which has brought about significant render time improvements."
 			);
 			project.setDutiesInfo(
 				"This is a solo project, so all duties were carried out by me."
@@ -576,7 +618,7 @@ $(document).ready(function () {
 			project.setTechnologyInfo(
 				"<span class=\"keyword\">HTML5 Canvas (2D)</span>",
 				"<span class=\"keyword\">JavaScript</span>",
-				"Personal Web Game Engine (Waffle)",
+				"Personal Web Game Engine (<a class=\"description-link\" href=\"projects.html?id=0\">Waffle</a>)",
 				"<span class=\"keyword\">GitHub</span>",
 				"Adobe Photoshop CS5",
 				"FL Studio 11"
@@ -624,7 +666,7 @@ $(document).ready(function () {
                 "}</code></pre>"
 			);
 			project.setGraphicsInfo(
-				"I lightly referenced Metroid Fusion for the general aesthetic of Ravagen. I used Ravagen's first couple prototypes to jump into learning pixel art. Since then, I've continued my studies by analyzing art of games from older consoles (SNES, GBA, etc), and following pixel art Twitter prompts and occasionally posting my work <span class=\"keyword\">@Wooffull</span>.",
+				"I lightly referenced Metroid Fusion for the general aesthetic of Ravagen. I used Ravagen's first couple prototypes to jump into learning pixel art. Since then, I've continued my studies by analyzing art of games from older consoles (SNES, GBA, etc), and following pixel art Twitter prompts and occasionally posting my work <a class=\"description-link\" href=\"https://twitter.com/Wooffull\">@Wooffull</a>.",
 				"Since Ravagen's prototype only comprises of a single large level, I used differently colored wall tiles to differentiate between major sections of the level. For example: the green areas are only accessible once the player has found the bullet power up; the red area leads to the end as a \"cliffhanger\" until the next build of Ravagen is released. Also, the \"environmental art\" such as the crystals sticking out of the walls are specific to its tile's color. For instance, the red crystals only come out of the green tiles.",
 				"The final version of Ravagen will have <span class=\"keyword\">lights/ shadows</span> to hone in on certain moods for different sections of the game."
 			);
