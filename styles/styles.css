@@ -200,6 +200,12 @@ code {
   height: 32px;
 }
 
+/* Prevent links in description from working on the projects page */
+.project-container > div > .project-description-container > p > a {
+  pointer-events: none;
+  cursor: default;
+}
+
 .project-download-link {
 }
 
