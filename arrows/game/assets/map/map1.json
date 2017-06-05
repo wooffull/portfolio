@@ -1,0 +1,44 @@
+{
+  "maps": [
+    
+{"mapData": [
+["XXXXXXXXXX"],
+["X         "],
+["X  X XXX X"],
+["X DX  R  X"],
+["X  XXXXX X"],
+["X   L    X"],
+["XX  XXXXXX"],
+["X   R    X"],
+["    X    X"],
+["XXXXXXXXXX"]
+]},
+    
+{"mapData": [
+["XXXXXXXXXX"],
+["X       LX"],
+["X XXX  XXX"],
+["X X      X"],
+["X X      X"],
+["X X      X"],
+["X XXXXXU X"],
+["X  LX    X"],
+["    X     "],
+["XXXXXXXXXX"]
+]},
+    
+{"mapData": [
+["XXXXXXXXXX"],
+["X  X D   X"],
+["   X XXX X"],
+["XX X     X"],
+["X  X XXR X"],
+["X  X  X  X"],
+["X     X  X"],
+["X     X   "],
+["XL    X  X"],
+["XXXXXXXXXX"]
+]}
+    
+  ]
+}

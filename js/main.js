@@ -37,18 +37,19 @@ var Project = function (name) {
     this._name = "";
     this._images = [];
     this._imagesAdded = 0;
-    this._downloadLink = null;
+    this._downloadLinkMap = {};
     this._tags = null;
 	
 	this._descriptionData = {
+    git:         null,
 		background:  null,
 		reflection:  null,
-		duties:		 null,
+		duties:		   null,
 		technology:  null,
 		programming: null,
 		graphics:    null,
 		audio:       null,
-		gallery:	 null,
+		gallery:	   null,
 	};
 
     DomElement.call(this);
@@ -124,6 +125,18 @@ Project.prototype = Object.create(DomElement.prototype, {
             return this._images;
         }
     },
+  
+  getGitInfo: {
+    value: function () {
+      return this._descriptionData.git;
+    }
+  },
+  
+  setGitInfo: {
+    value: function (value) {
+      this._descriptionData.git = value;
+    }
+  },
 	
 	getBackgroundInfo: {
 		value: function () {
@@ -265,15 +278,15 @@ Project.prototype = Object.create(DomElement.prototype, {
 		}	
 	},
 
-    getDownloadLink: {
+    getDownloadLinkMap: {
         value: function () {
-            return this._downloadLink;
+            return this._downloadLinkMap;
         }
     },
 
     setDownloadLink: {
-        value: function (value) {
-            this._downloadLink = value;
+        value: function (label, value) {
+            this._downloadLinkMap[label] = value;
         }
     },
     
@@ -363,8 +376,6 @@ var ProjectPage = function (project) {
 
     this._container = $("<div>");
     this._titleContainer = this._project._titleContainer;
-    this._downloadLink = null;
-    this._downloadContainer = null;
     this._imgContainer = $("<div>");
     this._descriptionContainer = $("<div>");
     
@@ -378,26 +389,10 @@ var ProjectPage = function (project) {
         HFP.Class.PROJECT_DESCRIPTION_CONTAINER
     );
     
-    if (this._project.getDownloadLink()) {
-        this._downloadContainer = $("<div>");
-        this._downloadLink = $("<a href=\"" + this._project.getDownloadLink() + "\">").html("<i class=\"material-icons material-icons-project-icon\">videogame_asset</i> Click to play!");
-        this._downloadContainer.append(this._downloadLink);
-        
-        this._downloadContainer.addClass(
-            HFP.Class.PROJECT_DOWNLOAD_LINK
-        );
-        
-        this._container
-            .append(this._titleContainer)
-            .append(this._downloadContainer)
-            .append(this._descriptionContainer)
-            .append(this._imgContainer);
-    } else {
-        this._container
-            .append(this._titleContainer)
-            .append(this._descriptionContainer)
-            .append(this._imgContainer);
-    }
+    this._container
+        .append(this._titleContainer)
+        .append(this._descriptionContainer)
+        .append(this._imgContainer);
 
     this.setDomElement(this._container);
 
@@ -422,7 +417,7 @@ ProjectPage.prototype = Object.create(DomElement.prototype, {
 
             this._imgContainer.html("");
 
-            for (var i = 0; i < imgs.length; i++) {
+            for (var i = 1; i < imgs.length; i++) {
                 this._imgContainer.append(imgs[i]);
             }
         }
@@ -430,46 +425,79 @@ ProjectPage.prototype = Object.create(DomElement.prototype, {
 	
 	renderDescription: {
 		value: function () {
+      var imgs = this._project.getImages();
 			var desc = "";
 			var data = this._project._descriptionData;
+      
+      var preview = "";
+      
+      if (imgs && imgs[0]) {
+        preview += "<div class=\"" + HFP.Class.PROJECT_CURRENT_IMAGES + " project-download-link\">";
+        preview += "<img src=\"" + imgs[0].src + "\">";
+      }
+      
+      var linkMap = this._project.getDownloadLinkMap();
+      var downloadLinks = Object.keys(linkMap);
+      var totalDownloadLinks = downloadLinks.length;
+      if (totalDownloadLinks > 0) {
+        if (preview === "") {
+          preview += "<h4 id=\"preview\">Preview</h4>";
+        }
+        
+        for (var i = 0; i < downloadLinks.length; i++) {
+          var key = downloadLinks[i];
+          var val = linkMap[key];
+          preview += "<br><a href=\"" + val + "\"><i class=\"material-icons material-icons-project-icon\">videogame_asset</i> Click to " + key + "</a>";
+        }
+      }
+      
+      if (preview !== "") {
+        preview += "</div>";
+        desc    += preview;
+      }
+			
+			if (data.duties) {
+				desc += "<h4 id=\"duties\">Duties</h4>";
+				desc += data.duties;
+			}
+      
+      if (data.git) {
+        desc += "<h4 id=\"git\">Git Repository</h4>";
+        desc += "<a class=\"description-link\" href=\"" + data.git + "\">" + data.git + "</a>";
+      }
 			
 			if (data.background) {
-				desc += "<h4>Background</h4>";
+				desc += "<h4 id=\"background\">Background</h4>";
 				desc += data.background;
 			}
 			
 			if (data.reflection) {
-				desc += "<h4>Reflection</h4>";
+				desc += "<h4 id=\"reflection\">Reflection</h4>";
 				desc += data.reflection;
 			}
 			
 			if (data.technology) {
-				desc += "<h4>Technology</h4>";
+				desc += "<h4 id=\"technology\">Technology</h4>";
 				desc += data.technology;
 			}
 			
-			if (data.duties) {
-				desc += "<h4>Duties</h4>";
-				desc += data.duties;
-			}
-			
 			if (data.programming) {
-				desc += "<h4>Programming</h4>";
+				desc += "<h4 id=\"programming\">Programming</h4>";
 				desc += data.programming;
 			}
 			
 			if (data.graphics) {
-				desc += "<h4>Graphics</h4>";
+				desc += "<h4 id=\"graphics\">Graphics</h4>";
 				desc += data.graphics;
 			}
 			
 			if (data.audio) {
-				desc += "<h4>Audio</h4>";
+				desc += "<h4 id=\"audio\">Audio</h4>";
 				desc += data.audio;
 			}
 			
 			if (data.gallery) {
-				desc += "<h4>Gallery</h4>";
+				desc += "<h4 id=\"gallery\">Gallery</h4>";
 			}
 			
 			this._descriptionContainer.html(desc);
@@ -562,6 +590,10 @@ $(document).ready(function () {
             project.addImage("img/rav3.gif");
             project.addImage("img/WFL1_c.gif");
             project.addImage("img/WFL1_d.png");
+            project.setDownloadLink("shoot thousands of arrows! (use Mouse and WASD)", "./arrows/game/index.html");
+            project.setDownloadLink("play Claimed (my Ludum Dare 38 submission)", "https://ldjam.com/events/ludum-dare/38/claimed");
+            project.setDownloadLink("play Ravagen", "./ravagen.html");
+      project.setGitInfo("https://github.com/wooffull/wfl-game");
 			project.setBackgroundInfo(
 				"Personal open-source 2D game engine.",
 				"Waffle Game Engine is used for creating performant 2D web games, and intended to be used with the <a class=\"description-link\" href=\"https://github.com/wooffull/wfl-editor\">Waffle Game Editor</a>. Reliability, performance, and ease of use are the primary points of focus in Waffle's design.",
@@ -574,7 +606,7 @@ $(document).ready(function () {
         "From my experience with Waffle, I want to focus on a better design for Waffle's API (especially state management and animation) to make it even easier to use. Also, since I want an editor for speedier prototyping, I need to put more time into the <a class=\"description-link\" href=\"https://github.com/wooffull/wfl-editor\">Waffle Game Editor</a>. If Waffle never picks up as a viable engine for game development, I envision it at least being a helpful tool for prototyping."
 			);
 			project.setDutiesInfo(
-				"This is a solo project, so all duties were carried out by me. However, <a class=\"description-link\" href=\"http://bbeshel.github.io/\">Benjamin Beshel</a> has worked with me on testing the engine by helping me create games with it (see the gallery below)."
+				"This is a solo project, so all duties were carried out by me. However, see the <a class=\"description-link\" href=\"#gallery\">gallery</a> below for some Waffle games that have been made with <a class=\"description-link\" href=\"http://bbeshel.github.io/\">Benjamin Beshel</a>'s help."
 			);
 			project.setTechnologyInfo(
 				"<span class=\"keyword\">HTML5 Canvas</span>",
@@ -602,7 +634,7 @@ $(document).ready(function () {
             project.addImage("img/rav0.png");
             project.addImage("img/rav1.png");
             project.addImage("img/rav2.png");
-            project.setDownloadLink("./ravagen.html");
+            project.setDownloadLink("play Ravagen", "./ravagen.html");
 			project.setBackgroundInfo(
 				"Futuristic space-shooter with a dash of <span class=\"keyword\">Metroid</span>.",
 				"Humanity has neared its end with no success of relocating to a new home planet. The intellectual elite have created you, an AI to explore the corners of space in an effort to uncover the mysteries of life and start humanity anew.",
@@ -685,7 +717,7 @@ $(document).ready(function () {
             project.addImage("img/at2.png");
             project.addImage("img/at3.png");
             project.addImage("img/at4.png");
-            project.setDownloadLink("http://www.kongregate.com/games/Wooffull/test3_preview?guest_access_key=0aa9c657991a383f1bac752a49b72b8ca41e8c23a66412963f6c50bdeb628d2c");
+            project.setDownloadLink("play A10ne Together", "http://www.kongregate.com/games/Wooffull/test3_preview?guest_access_key=0aa9c657991a383f1bac752a49b72b8ca41e8c23a66412963f6c50bdeb628d2c");
 			project.setBackgroundInfo(
 				"Fast-paced platformer where you use the pieces that break off your character as platforms.",
 				"A10ne Together (pronounced \"Alone Together\") is a Flash game I put together during my summer of 2013 and 2014 that used the Kongregate API to allow for shared <span class=\"keyword\">user-created content</span>. It was inspired by popular platformers like Super Meat Boy, but the title hints at its unique mechanic where the player is made up of pieces and must use them to navigate through the levels. The overworld is inspired by Super Mario World where the player can beat levels in different ways to unlock different paths.",
@@ -713,6 +745,7 @@ $(document).ready(function () {
             project.addImage("img/rc2.gif");
             project.addImage("img/rc0.png");
             project.addImage("img/rc1.png");
+      project.setGitInfo("https://github.com/budjmt/RootCanal");
 			project.setBackgroundInfo(
 				"Top-down exploration game where you drill a tooth in search of cavities.",
 				"In Root Canal, you guide a small ship through a tooth in hope of destroying cavities. Use your x-ray vision to avoid the bacteria cannons as you drill as much as you can before inevitable destruction."
@@ -755,7 +788,7 @@ $(document).ready(function () {
             project.addImage("img/guild4.gif");
             project.addImage("img/guild1.png");
             project.addImage("img/guild2.png");
-            project.setDownloadLink("https://www.dropbox.com/s/9bdiada9lw0gzyj/Guild%20of%20the%20Sparkle%20Dwarf.zip?dl=0");
+            project.setDownloadLink("download Guild of the Sparkle Dwarf", "https://www.dropbox.com/s/9bdiada9lw0gzyj/Guild%20of%20the%20Sparkle%20Dwarf.zip?dl=0");
 				
             project.setBackgroundInfo(
 				"Puzzle game with a focus on Othello-like and block sliding puzzles.",
@@ -770,7 +803,8 @@ $(document).ready(function () {
             project.addImage("img/collect0.png");
             project.addImage("img/collect1.png");
             project.addImage("img/collect2.png");
-            project.setDownloadLink("https://www.dropbox.com/s/izlgm80tyo5fbul/CollectEmUp.zip?dl=0");
+            project.setDownloadLink("download this demo", "https://www.dropbox.com/s/izlgm80tyo5fbul/CollectEmUp.zip?dl=0");
+      project.setGitInfo("https://github.com/wooffull/CollectEmUp");
             project.setBackgroundInfo(
 				"3D platformer following a lizard on his journey to become a dragon.",
 				"In late 2015, I worked in a team of 9 people to create a small game in 15 weeks with C++ and OpenGL where you (a lizard) need to collect gears to create a machine to help you fly and become a \"dragon\". About half way through the project, we dropped down to 5 members, so our scope was cut drastically. I was the programming lead for this project and designed the software architecture. The shaders we wrote were basic vertex and pixel shaders for OpenGL.",
@@ -788,7 +822,7 @@ $(document).ready(function () {
             project.addImage("img/anybeat3.png");
             project.addImage("img/anybeat4.png");
             project.addImage("img/anybeat5.png");
-            project.setDownloadLink("https://www.dropbox.com/s/i52i4s41e5w6bev/AnyBEAT.zip?dl=0");
+            project.setDownloadLink("download AnyBEAT", "https://www.dropbox.com/s/i52i4s41e5w6bev/AnyBEAT.zip?dl=0");
             project.setBackgroundInfo(
 				"Rhythm game engine used for creating experimental rhythm games.",
 				"AnyBeat is a rhythm game engine I created using Adobe AIR with Flash AS3 throughout 2014. I have always loved combining music and gaming, like in popular rhythm games such as Dance Dance Revolution, StepMania, and Osu. The main purpose of AnyBeat was to create a rhythm game that used a unique controller to provide a fresh experience to the rhythm gaming scene. I wanted to use AnyBeat as a sort of rhythm game engine to create any kind of rhythm game I could imagine. Modern, casual rhythm games like the Rhythm Heaven series introduced a new spin to rhythm gaming that mirrored Wario Ware minigames, and I wanted to be able to create rhythm games as unique as those.",
@@ -805,7 +839,7 @@ $(document).ready(function () {
             project.addImage("img/TDT2.gif");
             project.addImage("img/TDT0.png");
             project.addImage("img/TDT1.png");
-            project.setDownloadLink("https://www.dropbox.com/s/0mfy0uk27saosbl/ThirdDimensionTest.swf?dl=0");
+            project.setDownloadLink("download this demo", "https://www.dropbox.com/s/0mfy0uk27saosbl/ThirdDimensionTest.swf?dl=0");
             project.setBackgroundInfo(
 				"Primitive 3D graphics rendering engine made in Flash.",
 				"During my first year at RIT (2012), I wondered how 3D was handled in applications. I enjoy math, so I attempted to take on the challenge of creating a basic 3D engine from scratch, in Adobe's Flash environment. A friend of mine was interested in the project and worked together with me for a few months. The .swf in the download link provides an area where the user can explore a basic 3D area where shapes are rotating and moving around.",

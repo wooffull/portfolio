@@ -104,6 +104,10 @@ code {
 	font-size: 0.8em;
 }
 
+#bio-job-title {
+  margin-top: -1em;
+  padding-bottom: 1em;
+}
 
 ::selection {
 	background: #96b6fd;
@@ -227,6 +231,9 @@ code {
     max-width: 50%;
     margin-top: 1em;
     border: solid black 1px;
+}
+.project-current-images:nth-of-type(1) > img {
+  margin-top: 0;
 }
 
 .project-container .project-description-container,
