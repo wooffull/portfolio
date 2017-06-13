@@ -95,6 +95,18 @@ var Project = function (name) {
     this._descriptionContainer.addClass(
         HFP.Class.PROJECT_DESCRIPTION_CONTAINER
     );
+  
+    // Load default image
+    var img = new Image();
+    img.onload = function () {
+      if (this._images.length === 0) {
+        var $img = $(img);
+        
+        this._imgContainer.html('');
+        this._imgContainer.append($img);
+      }
+    }.bind(this);
+    img.src = './img/default.jpg';
 
     this.setDomElement(this._container);
 };
